@@ -1,5 +1,7 @@
 package br.com.bitwaysystem;
 
+import android.annotation.TargetApi;
+import android.os.Build;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -9,16 +11,22 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.app.Activity;
 import android.view.View.OnClickListener;
+import android.widget.Button;
 import android.widget.TextView;
+import android.os.StrictMode;
 
-public class FortuneCookie extends  Activity implements OnClickListener {
+public class FortuneCookie extends Activity implements OnClickListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_fortune_cookie);
+
+        Button buttonOK = (Button) findViewById(R.id.buttonOK);
+        buttonOK.setOnClickListener(this);
     }
 
+    @TargetApi(Build.VERSION_CODES.GINGERBREAD)
     public void onClick(View v) {
 
         TextView cookieID = (TextView) findViewById(R.id.editTextIDCookie);
@@ -26,6 +34,9 @@ public class FortuneCookie extends  Activity implements OnClickListener {
 
         CookieBean cookieBean = new CookieBean(
                 Integer.parseInt(cookieID.getText().toString()));
+
+        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+        StrictMode.setThreadPolicy(policy);
 
         SoapServices ws = new SoapServices();
 

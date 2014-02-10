@@ -14,7 +14,7 @@ import org.ksoap2.transport.HttpTransportSE;
 public class SoapServices {
 
 
-    private static final String NAMEESPACE = "http://oracle.e1.bssv.JP010020/";
+    private static final String NAMEESPACE = "http://webservice.bitwaysystem.com.br/";
     private static final String METHOD_NAME = "retrieveCookie";
 
     // Localhost para android
@@ -29,13 +29,19 @@ public class SoapServices {
 
         String values[] = null;
 
-        SoapObject soap = new SoapObject(NAMEESPACE, METHOD_NAME);
-        soap.addProperty("index", ccokieTO.index);
+        SoapObject soapObject = new SoapObject(NAMEESPACE, METHOD_NAME);
+
+        SoapObject arg0 = new SoapObject(NAMEESPACE,"arg0");
+        arg0.addProperty("cookieMessage","");
+        arg0.addProperty("index", ccokieTO.index);
+
+        soapObject.addSoapObject(arg0);
+
 
         SoapSerializationEnvelope envelope = new SoapSerializationEnvelope(
                 SoapEnvelope.VER11);
 
-        envelope.setOutputSoapObject(soap);
+        envelope.setOutputSoapObject(soapObject);
 
         HttpTransportSE transport = new HttpTransportSE(URL);
 
