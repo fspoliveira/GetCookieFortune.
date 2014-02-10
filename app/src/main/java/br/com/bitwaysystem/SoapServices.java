@@ -37,7 +37,6 @@ public class SoapServices {
 
         soapObject.addSoapObject(arg0);
 
-
         SoapSerializationEnvelope envelope = new SoapSerializationEnvelope(
                 SoapEnvelope.VER11);
 
