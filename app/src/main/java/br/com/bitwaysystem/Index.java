@@ -10,7 +10,7 @@ import org.ksoap2.serialization.PropertyInfo;
  * Created by fsantiago on 11/02/14.
  */
 
-public class DocumentIDs   extends Vector<String> implements KvmSerializable {
+public class Index extends Vector<String> implements KvmSerializable {
 
     /**
      *

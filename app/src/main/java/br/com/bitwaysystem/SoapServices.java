@@ -30,22 +30,19 @@ public class SoapServices {
     public String[] getFortuneCookie(CookieBean cookieTO) {
 
 
-        DocumentIDs documentIdVector = new DocumentIDs();
-        documentIdVector.add("1");
+        Index indexVector = new Index();
+        indexVector.add("1");
 
         PropertyInfo documentIdsPropertyInfo = new PropertyInfo();
         documentIdsPropertyInfo.setName("arg0");
-        documentIdsPropertyInfo.setValue(documentIdVector);
-        documentIdsPropertyInfo.setType(documentIdVector.getClass());
-
+        documentIdsPropertyInfo.setValue(indexVector);
+        documentIdsPropertyInfo.setType(indexVector.getClass());
 
         String values[] = null;
 
         SoapObject soapObject = new SoapObject(NAMEESPACE, METHOD_NAME);
 
         soapObject.addProperty(documentIdsPropertyInfo);
-        soapObject.addProperty("cookieMessage","");
-        soapObject.addProperty("index", cookieTO.index);
 
         SoapSerializationEnvelope envelope = new SoapSerializationEnvelope(
                 SoapEnvelope.VER11);
