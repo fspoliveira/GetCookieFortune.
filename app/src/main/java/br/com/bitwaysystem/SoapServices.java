@@ -3,6 +3,7 @@ package br.com.bitwaysystem;
 import android.util.Log;
 
 import org.ksoap2.SoapEnvelope;
+import org.ksoap2.serialization.PropertyInfo;
 import org.ksoap2.serialization.SoapObject;
 import org.ksoap2.serialization.SoapSerializationEnvelope;
 import org.ksoap2.transport.HttpTransportSE;
@@ -17,6 +18,7 @@ public class SoapServices {
     private static final String NAMEESPACE = "http://webservice.bitwaysystem.com.br/";
     private static final String METHOD_NAME = "retrieveCookie";
 
+
     // Localhost para android
     //private static final String URL = "http://10.0.2.2:8988/context-root-JP010020/CustomerManagerSoapHttpPort";
 
@@ -25,20 +27,29 @@ public class SoapServices {
     private static final String SOAP_ACTION = "retrieveCookie";
 
     @SuppressWarnings("deprecation")
-    public String[] getFortuneCookie(CookieBean ccokieTO) {
+    public String[] getFortuneCookie(CookieBean cookieTO) {
 
         String values[] = null;
 
         SoapObject soapObject = new SoapObject(NAMEESPACE, METHOD_NAME);
 
-        SoapObject arg0 = new SoapObject(NAMEESPACE,"arg0");
-        arg0.addProperty("cookieMessage","");
-        arg0.addProperty("index", ccokieTO.index);
 
-        soapObject.addSoapObject(arg0);
+
+        PropertyInfo pi = new PropertyInfo();
+        pi.setName("arg0");
+
+        soapObject.addProperty(pi);
+        soapObject.addProperty("cookieMessage", "");
+        soapObject.addProperty("index", cookieTO.index);
+
+
 
         SoapSerializationEnvelope envelope = new SoapSerializationEnvelope(
                 SoapEnvelope.VER11);
+
+        envelope.setAddAdornments(false);
+        envelope.implicitTypes = true;
+        envelope.dotNet = false;
 
         envelope.setOutputSoapObject(soapObject);
 

@@ -41,7 +41,7 @@ public class FortuneCookie extends Activity implements OnClickListener {
         SoapServices ws = new SoapServices();
 
         String values[] = ws.getFortuneCookie(cookieBean);
-        cookieMessage.setText(values[1].toString());
+        cookieMessage.setText(values[0].toString());
     }
 
 
