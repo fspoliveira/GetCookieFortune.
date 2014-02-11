@@ -29,27 +29,26 @@ public class SoapServices {
     @SuppressWarnings("deprecation")
     public String[] getFortuneCookie(CookieBean cookieTO) {
 
+
+        DocumentIDs documentIdVector = new DocumentIDs();
+        documentIdVector.add("1");
+
+        PropertyInfo documentIdsPropertyInfo = new PropertyInfo();
+        documentIdsPropertyInfo.setName("arg0");
+        documentIdsPropertyInfo.setValue(documentIdVector);
+        documentIdsPropertyInfo.setType(documentIdVector.getClass());
+
+
         String values[] = null;
 
         SoapObject soapObject = new SoapObject(NAMEESPACE, METHOD_NAME);
 
-
-
-        PropertyInfo pi = new PropertyInfo();
-        pi.setName("arg0");
-
-        soapObject.addProperty(pi);
-        soapObject.addProperty("cookieMessage", "");
+        soapObject.addProperty(documentIdsPropertyInfo);
+        soapObject.addProperty("cookieMessage","");
         soapObject.addProperty("index", cookieTO.index);
-
-
 
         SoapSerializationEnvelope envelope = new SoapSerializationEnvelope(
                 SoapEnvelope.VER11);
-
-        envelope.setAddAdornments(false);
-        envelope.implicitTypes = true;
-        envelope.dotNet = false;
 
         envelope.setOutputSoapObject(soapObject);
 
