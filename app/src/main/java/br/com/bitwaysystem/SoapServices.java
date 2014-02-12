@@ -31,7 +31,7 @@ public class SoapServices {
 
 
         Index indexVector = new Index();
-        indexVector.add("1");
+        indexVector.add(Integer.toString(cookieTO.index));
 
         PropertyInfo documentIdsPropertyInfo = new PropertyInfo();
         documentIdsPropertyInfo.setName("arg0");

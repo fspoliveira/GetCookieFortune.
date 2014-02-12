@@ -30,7 +30,7 @@ public class FortuneCookie extends Activity implements OnClickListener {
     public void onClick(View v) {
 
         TextView cookieID = (TextView) findViewById(R.id.editTextIDCookie);
-        TextView cookieMessage = (TextView) findViewById(R.id.editTextIDCookie);
+        TextView cookieMessage = (TextView) findViewById(R.id.editTextCookieMessage);
 
         CookieBean cookieBean = new CookieBean(
                 Integer.parseInt(cookieID.getText().toString()));

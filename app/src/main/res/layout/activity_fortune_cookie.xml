@@ -9,22 +9,23 @@
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@android:color/holo_red_dark"
+        android:background="@android:color/black"
         android:baselineAligned="true">
 
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="OK"
+            android:text="@string/OK"
             android:id="@+id/buttonOK"
-            android:layout_gravity="right" />
+            android:layout_gravity="right"
+            android:background="#ff2711" />
     </LinearLayout>
 
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="1.22"
+        android:layout_weight="1.10"
         android:weightSum="1">
 
         <LinearLayout
@@ -36,7 +37,6 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textAppearance="?android:attr/textAppearanceLarge"
                 android:text="Id Cookie:"
                 android:id="@+id/lblIdCookie" />
 
@@ -47,21 +47,13 @@
                 android:layout_weight="1" />
         </LinearLayout>
 
-        <LinearLayout
-            android:orientation="horizontal"
+        <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="0.14"
-            android:id="@+id/linearLayout" >
-
-            <EditText
-                android:layout_width="wrap_content"
-                android:layout_height="192dp"
-                android:inputType="textMultiLine"
-                android:ems="10"
-                android:id="@+id/editTextCookieMessage"
-                android:layout_weight="1" />
-        </LinearLayout>
+            android:inputType="textMultiLine"
+            android:ems="10"
+            android:id="@+id/editTextCookieMessage"
+            android:layout_weight="0.04" />
     </LinearLayout>
 
     <LinearLayout
@@ -76,7 +68,7 @@
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:text="Bitway System"
             android:id="@+id/textViewFooter"
-            android:textColor="#ff001b"
+            android:textColor="#FF2711"
             android:layout_gravity="center_horizontal" />
     </LinearLayout>
 
