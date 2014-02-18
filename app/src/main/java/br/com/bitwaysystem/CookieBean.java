@@ -5,6 +5,7 @@ package br.com.bitwaysystem;
  */
 public class CookieBean {
 
+
     public int index;
     public String cookieMessage;
 
