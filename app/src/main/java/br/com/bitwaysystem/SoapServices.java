@@ -1,10 +1,9 @@
 package br.com.bitwaysystem;
 
-import android.util.Log;
-
 import org.ksoap2.SoapEnvelope;
 import org.ksoap2.serialization.PropertyInfo;
 import org.ksoap2.serialization.SoapObject;
+import org.ksoap2.serialization.SoapPrimitive;
 import org.ksoap2.serialization.SoapSerializationEnvelope;
 import org.ksoap2.transport.HttpTransportSE;
 
@@ -27,8 +26,7 @@ public class SoapServices {
     private static final String SOAP_ACTION = "retrieveCookie";
 
     @SuppressWarnings("deprecation")
-    public String[] getFortuneCookie(CookieBean cookieTO) {
-
+    public CookieBean getFortuneCookie(CookieBean cookieTO) {
 
         Index indexVector = new Index();
         indexVector.add(Integer.toString(cookieTO.index));
@@ -61,9 +59,16 @@ public class SoapServices {
             values = new String[result.getPropertyCount()];
             for (int i = 0; i < result.getPropertyCount(); i++) {
                 values[i] = result.getProperty(i).toString();
+
             }
 
-            Log.w("Minha app", "Invocou Web Service");
+            SoapObject  returnSoapObject = (SoapObject) result.getProperty("return");
+
+            SoapPrimitive  cookieMessage= (SoapPrimitive) returnSoapObject.getProperty("cookieMessage");
+
+            cookieTO.setCookieMessage(cookieMessage.toString());
+
+
         } catch (Exception e) {
             // TODO: handle exception
             e.printStackTrace();
@@ -71,7 +76,7 @@ public class SoapServices {
             System.out.println(transport.responseDump);
             System.out.println(e.getMessage());
         }
-        return values;
+        return cookieTO;
     }
 
 }
